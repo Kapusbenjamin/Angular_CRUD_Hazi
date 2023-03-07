@@ -1,0 +1,13 @@
+<table>
+  <tr >
+    <th *ngFor="let column of columns">{{column}}</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.size}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.is_available}}</td>
+    <td><button (click)="delete(product.id)">Delete</button></td>
+  </tr>
+</table>
