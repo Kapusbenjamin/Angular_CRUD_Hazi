@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListProductsComponent } from './Components/list-products/list-products.component';
+import { HozzaadasComponent } from './Components/hozzaadas/hozzaadas.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ModositasComponent } from './Components/modositas/modositas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    HozzaadasComponent,
+    ModositasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

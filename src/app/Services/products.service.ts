@@ -17,8 +17,20 @@ export class ProductsService {
     return this.xhttp.get(this.apiUrl);
   }
 
+  getProductById(id : number) : Observable<any> {
+    return this.xhttp.get(`${this.apiUrl}/${id}`);
+  }
+
   delete(id : number) : Observable<any>{
     return this.xhttp.delete(`${this.apiUrl}/${id}`);
+  }
+
+  create(product : any) : Observable<any>{
+    return this.xhttp.post(this.apiUrl, product);
+  }
+
+  update(product : any) : Observable<any>{
+    return this.xhttp.patch(`${this.apiUrl}/${product.id}`, product);
   }
 
 

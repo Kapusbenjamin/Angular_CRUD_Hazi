@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <label for="name">Name</label>
+  <input type="text" formControlName="name">
+  <label for="price">Price</label>
+  <input type="number" formControlName="price">
+  <label for="size">Size</label>
+  <input type="number" formControlName="size">
+  <label for="is_available">Is available</label>
+  <select formControlName="is_available">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+  <input type="submit" (click)="create()">
+</form>
