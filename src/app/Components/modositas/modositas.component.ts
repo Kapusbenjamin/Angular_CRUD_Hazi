@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProductsService } from 'src/app/Services/products.service';
 
@@ -11,6 +11,7 @@ export class ModositasComponent implements OnInit {
 
   form! : FormGroup<any>
   product! : any
+  productsList! : any
 
   constructor(
     private fb : FormBuilder,
@@ -26,16 +27,14 @@ export class ModositasComponent implements OnInit {
       is_available: ['']
     })
 
-    this.form.controls['id'].valueChanges.subscribe(() => {
-      if(!isNaN(this.form.controls['id'].value)){
-        this.getProduct(this.form.controls['id'].value)
-      }
+    this.productsService.getAllProducts().subscribe(res => {
+      this.productsList = res;
     })
 
   }
 
-  getProduct(id : number){
-    this.productsService.getProductById(id).subscribe(res => {
+  getProduct(){
+    this.productsService.getProductById(this.form.controls['id'].value).subscribe(res => {
       console.log(res);
       this.product = res;
       this.form.controls['name'].setValue(this.product.name)
