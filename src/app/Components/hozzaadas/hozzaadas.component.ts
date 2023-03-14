@@ -28,7 +28,7 @@ export class HozzaadasComponent implements OnInit {
   create(){
 
     let product = {
-      name: "this.form.controls['name'].value",
+      name: this.form.controls['name'].value,
       price: 12,
       size: 99,
       is_available: 1

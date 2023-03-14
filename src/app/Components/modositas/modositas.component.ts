@@ -27,7 +27,7 @@ export class ModositasComponent implements OnInit {
     })
 
     this.form.controls['id'].valueChanges.subscribe(() => {
-      if(!this.product){
+      if(!isNaN(this.form.controls['id'].value)){
         this.getProduct(this.form.controls['id'].value)
       }
     })
@@ -38,20 +38,16 @@ export class ModositasComponent implements OnInit {
     this.productsService.getProductById(id).subscribe(res => {
       console.log(res);
       this.product = res;
-      this.form.setValue({
-        id: this.product.id,
-        name: this.product.name,
-        price: this.product.price,
-        size: this.product.size,
-        is_available: this.product.is_available
-      })
+      this.form.controls['name'].setValue(this.product.name)
+      this.form.controls['price'].setValue(this.product.price)
+      this.form.controls['size'].setValue(this.product.size)
+      this.form.controls['is_available'].setValue(this.product.is_available)
     })
   }
 
   update(){
     this.productsService.update(this.form.value).subscribe(res => {
       console.log(res);
-
     })
   }
 

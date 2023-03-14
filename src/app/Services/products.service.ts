@@ -26,11 +26,11 @@ export class ProductsService {
   }
 
   create(product : any) : Observable<any>{
-    return this.xhttp.post(this.apiUrl, product);
+    return this.xhttp.post(this.apiUrl, JSON.stringify(product));
   }
 
   update(product : any) : Observable<any>{
-    return this.xhttp.patch(`${this.apiUrl}/${product.id}`, product);
+    return this.xhttp.patch(`${this.apiUrl}/${product.id}`, JSON.stringify(product));
   }
 
 
